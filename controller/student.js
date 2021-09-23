@@ -142,11 +142,9 @@ const deleteStudent = async (req ,res) => {
   }
 }
 
-// ================= update password doesn't work parfectly ================
-
 const updatePassword = async (req, res) => {
   try {
-    const id = res.params.id;
+    const id = req.params.id;
     const {password} = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
     await Student.findOneAndUpdate(
